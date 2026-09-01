@@ -597,6 +597,188 @@ html, body {
   color: var(--gold);
 }
 
+/* ── Editable text (Top Missed Movies) ── */
+.text-editable {
+  cursor: text;
+  transition: color 0.15s;
+}
+
+.text-editable:hover {
+  color: var(--gold);
+}
+
+.text-placeholder {
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.text-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: inherit;
+  padding: 2px 6px;
+  outline: none;
+  width: 100%;
+  max-width: 320px;
+}
+
+.movie-title.text-input {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.movie-date.text-input {
+  font-size: 11px;
+  max-width: 140px;
+}
+
+/* ── Top Missed Movies ── */
+.missed-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
+.missed-header {
+  margin-bottom: 16px;
+}
+
+.missed-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.missed-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.missed-summary {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-width: 760px;
+}
+
+.missed-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.missed-summary-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.missed-summary-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.missed-list {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 760px;
+}
+
+.movie-rank {
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.missed-list .movie-row:nth-child(1) .movie-rank,
+.missed-list .movie-row:nth-child(2) .movie-rank,
+.missed-list .movie-row:nth-child(3) .movie-rank {
+  color: var(--gold);
+}
+
+.missed-hint {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── Missing-figures warning ── */
+.movie-row.needs-data {
+  background: rgba(245, 200, 66, 0.05);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.movie-row.needs-data:hover {
+  background: rgba(245, 200, 66, 0.09);
+}
+
+.movie-date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.needs-data-flag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(245, 200, 66, 0.12);
+  border: 1px solid rgba(245, 200, 66, 0.35);
+  border-radius: 999px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+.stat-missing {
+  color: var(--gold) !important;
+  font-weight: 700;
+  text-decoration: underline dotted rgba(245, 200, 66, 0.6);
+  text-underline-offset: 3px;
+}
+
+.player-capsules {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.player-needs-capsule {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(245, 200, 66, 0.12);
+  border: 1px solid rgba(245, 200, 66, 0.35);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
 /* ── Footer ── */
 .app-footer {
   border-top: 1px solid var(--border);

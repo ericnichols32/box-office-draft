@@ -1,5 +1,6 @@
 import type { Movie, PredictionBonus } from '../types';
 import { MovieRow } from './MovieRow';
+import { isReleased, needsFigures } from '../utils/release';
 
 interface Props {
   playerName: string;
@@ -25,21 +26,7 @@ function fmt(val: number): string {
 }
 
 function countReleased(movies: Movie[]): number {
-  const now = new Date();
-  const months: Record<string, number> = {
-    Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-    Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
-  };
-  return movies.filter((m) => {
-    const parts = m.releaseDate.split(' ');
-    if (parts.length === 2) {
-      const month = months[parts[0]];
-      const day = parseInt(parts[1]);
-      if (!isNaN(month) && !isNaN(day)) return new Date(2026, month, day) <= now;
-    }
-    const d = new Date(m.releaseDate);
-    return !isNaN(d.getTime()) && d <= now;
-  }).length;
+  return movies.filter((m) => isReleased(m.releaseDate)).length;
 }
 
 export const PlayerColumn: React.FC<Props> = ({
@@ -67,6 +54,7 @@ export const PlayerColumn: React.FC<Props> = ({
 
   const total = movieTotal + bonusTotal;
   const released = countReleased(movies);
+  const incomplete = movies.filter((m) => needsFigures(m)).length;
 
   return (
     <div className={`player-column ${isLeading ? 'leading' : ''}`}>
@@ -78,7 +66,14 @@ export const PlayerColumn: React.FC<Props> = ({
         <div className="player-total" style={{ color: isLeading ? '#f5c842' : '#fff' }}>
           {fmt(total)}
         </div>
-        <div className="player-released-capsule">{released}/{movies.length} released</div>
+        <div className="player-capsules">
+          <div className="player-released-capsule">{released}/{movies.length} released</div>
+          {incomplete > 0 && (
+            <div className="player-needs-capsule" title="Released films still missing budget or gross">
+              ⚠ {incomplete} need{incomplete === 1 ? 's' : ''} figures
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="movies-list">

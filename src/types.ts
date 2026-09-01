@@ -26,4 +26,5 @@ export interface DraftData {
   ericMovies: Movie[];
   evanMovies: Movie[];
   bonuses: PredictionBonus[];
+  missedMovies: Movie[]; // top grossing films neither player drafted — display only, not scored
 }

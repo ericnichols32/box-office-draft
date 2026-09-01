@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
+  # Called by update-box-office.yml, because a push made with GITHUB_TOKEN
+  # does not itself trigger this workflow.
+  workflow_call:
 
 permissions:
   contents: read

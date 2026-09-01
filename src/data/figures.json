@@ -1,0 +1,41 @@
+{
+  "updatedAt": "2026-09-01T00:00:00Z",
+  "note": "Machine-managed by scripts/update-box-office.mjs. Money in USD millions. searchTitle is the real release title used for lookups, which often differs from the draft nickname.",
+  "drafted": {
+    "mario-galaxy":        { "searchTitle": "The Super Mario Galaxy Movie", "budget": 110,  "gross": 1012.5 },
+    "toy-story-5":         { "searchTitle": "Toy Story 5",                  "budget": 250,  "gross": 1136.4 },
+    "odyssey":             { "searchTitle": "The Odyssey (2026 Nolan)",     "budget": 250,  "gross": 1555.2 },
+    "moana-2026":          { "searchTitle": "Moana (2026 live action)",     "budget": 250,  "gross": 315.4 },
+    "spiderman-bnd":       { "searchTitle": "Spider-Man: Brand New Day",    "budget": 225,  "gross": 2333.0 },
+    "paw-patrol-dino":     { "searchTitle": "PAW Patrol: The Dino Movie",   "budget": 40,   "gross": 124.6 },
+    "insidious-bleeding":  { "searchTitle": "Insidious: Out of the Further","budget": 18,   "gross": 110.0 },
+    "clayface":            { "searchTitle": "Clayface (2026)",              "budget": null, "gross": null },
+    "godzilla-minus-zero": { "searchTitle": "Godzilla Minus Zero",          "budget": null, "gross": null },
+    "focker-in-law":       { "searchTitle": "Focker In Law",                "budget": null, "gross": null },
+    "jumanji-sequel":      { "searchTitle": "Jumanji (2026 sequel)",        "budget": null, "gross": null },
+    "michael":             { "searchTitle": "Michael (2026 Jackson biopic)","budget": 200,  "gross": 1021.4 },
+    "devil-wears-prada-2": { "searchTitle": "The Devil Wears Prada 2",      "budget": 100,  "gross": 692.8 },
+    "mortal-kombat-2":     { "searchTitle": "Mortal Kombat II (2026)",      "budget": 80,   "gross": 129.47 },
+    "mandalorian-grogu":   { "searchTitle": "The Mandalorian and Grogu",    "budget": 166,  "gross": 345 },
+    "scary-movie-6":       { "searchTitle": "Scary Movie (2026 reboot)",    "budget": 30,   "gross": 231.5 },
+    "masters-universe":    { "searchTitle": "Masters of the Universe (2026)","budget": 170, "gross": 113.8 },
+    "disclosure-day":      { "searchTitle": "Disclosure Day (2026)",        "budget": 115,  "gross": 241.3 },
+    "minions-monsters":    { "searchTitle": "Minions & Monsters",           "budget": 85,   "gross": 513.4 },
+    "resident-evil-2026":  { "searchTitle": "Resident Evil (2026)",         "budget": null, "gross": null },
+    "hunger-games-sequel": { "searchTitle": "The Hunger Games: Sunrise on the Reaping", "budget": null, "gross": null },
+    "werwulf":             { "searchTitle": "Werwulf (2026 Eggers)",        "budget": null, "gross": null }
+  },
+  "missed": [
+    { "id": "project-hail-mary",    "title": "Project Hail Mary",     "releaseDate": "Mar 20", "budget": 200,  "gross": 684.3 },
+    { "id": "pegasus-3",            "title": "Pegasus 3",             "releaseDate": "Feb 17", "budget": 80,   "gross": 641.1 },
+    { "id": "obsession",            "title": "Obsession",             "releaseDate": "May 15", "budget": 0.75, "gross": 505.7 },
+    { "id": "backrooms",            "title": "Backrooms",             "releaseDate": "May 29", "budget": 10,   "gross": 393.2 },
+    { "id": "hoppers",              "title": "Hoppers",               "releaseDate": "Mar 6",  "budget": 150,  "gross": 389.7 },
+    { "id": "kung-fu-soccer",       "title": "Kung Fu Soccer",        "releaseDate": "Jul 11", "budget": 53,   "gross": 306.2 },
+    { "id": "dear-you",             "title": "Dear You",              "releaseDate": "Apr 30", "budget": 2.06, "gross": 276.6 },
+    { "id": "wuthering-heights",    "title": "Wuthering Heights",     "releaseDate": "Feb 13", "budget": 80,   "gross": 241.7 },
+    { "id": "all-wishes-come-true", "title": "All Wishes Come True!", "releaseDate": "Aug 14", "budget": null, "gross": 232.0 },
+    { "id": "scream-7",             "title": "Scream 7",              "releaseDate": "Feb 27", "budget": 45,   "gross": 213.8 }
+  ],
+  "flags": []
+}

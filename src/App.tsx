@@ -1,19 +1,28 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { draftData } from './data/draft';
-import { useTMDB } from './hooks/useTMDB';
+import { useTMDB, lookupMovieByTitle } from './hooks/useTMDB';
 import { PlayerColumn } from './components/PlayerColumn';
 import { BonusSection } from './components/BonusSection';
+import { MissedMovies } from './components/MissedMovies';
 import type { Movie, PredictionBonus } from './types';
 
 type MovieOverrides = Record<string, { budget?: number | null; gross?: number | null; customPoster?: string | null }>;
 type BonusOverrides = Record<string, { ericPickGross?: number | null; evanPickGross?: number | null }>;
+type MissedOverrides = Record<string, Partial<Movie>>;
 
 function loadMovieOverrides(): MovieOverrides {
   try { return JSON.parse(localStorage.getItem('draft_overrides') ?? '{}'); } catch { return {}; }
 }
 function loadBonusOverrides(): BonusOverrides {
   try { return JSON.parse(localStorage.getItem('bonus_overrides') ?? '{}'); } catch { return {}; }
+}
+
+// Missed movies live in the repo and are refreshed by the scheduled box-office
+// job, so only explicit hand edits are stored here. Caching the whole list
+// locally would shadow every future update.
+function loadMissedOverrides(): MissedOverrides {
+  try { return JSON.parse(localStorage.getItem('missed_overrides') ?? '{}'); } catch { return {}; }
 }
 
 function applyMovieOverrides(movies: Movie[], overrides: MovieOverrides): Movie[] {
@@ -66,6 +75,7 @@ function calcTotal(movies: Movie[], bonuses: PredictionBonus[], player: 'eric' |
 function App() {
   const [movieOverrides, setMovieOverrides] = useState<MovieOverrides>(loadMovieOverrides);
   const [bonusOverrides, setBonusOverrides] = useState<BonusOverrides>(loadBonusOverrides);
+  const [missedOverrides, setMissedOverrides] = useState<MissedOverrides>(loadMissedOverrides);
 
   useEffect(() => {
     localStorage.setItem('draft_overrides', JSON.stringify(movieOverrides));
@@ -75,12 +85,17 @@ function App() {
     localStorage.setItem('bonus_overrides', JSON.stringify(bonusOverrides));
   }, [bonusOverrides]);
 
+  useEffect(() => {
+    localStorage.setItem('missed_overrides', JSON.stringify(missedOverrides));
+  }, [missedOverrides]);
+
   const ericTMDB = useTMDB(draftData.ericMovies);
   const evanTMDB = useTMDB(draftData.evanMovies);
 
   const ericMovies = applyMovieOverrides(ericTMDB, movieOverrides);
   const evanMovies = applyMovieOverrides(evanTMDB, movieOverrides);
   const bonuses = applyBonusOverrides(draftData.bonuses, bonusOverrides);
+  const missedMovies = draftData.missedMovies.map((m) => ({ ...m, ...missedOverrides[m.id] }));
 
   const handleMovieChange = (field: 'budget' | 'gross') => (id: string, val: number | null) => {
     setMovieOverrides((prev) => ({ ...prev, [id]: { ...prev[id], [field]: val } }));
@@ -92,6 +107,35 @@ function App() {
 
   const handleBonusGrossChange = (id: string, field: 'ericPickGross' | 'evanPickGross', val: number | null) => {
     setBonusOverrides((prev) => ({ ...prev, [id]: { ...prev[id], [field]: val } }));
+  };
+
+  const patchMissed = (id: string, patch: Partial<Movie>) => {
+    setMissedOverrides((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
+  };
+
+  const handleMissedTitleChange = (id: string, title: string) => {
+    patchMissed(id, { title });
+    if (!title) return;
+    // Retitling points at a different film, so pull its poster. Budget and gross
+    // are only filled when still blank — the scheduled job owns those.
+    lookupMovieByTitle(title).then((res) => {
+      setMissedOverrides((prev) => {
+        const base = draftData.missedMovies.find((m) => m.id === id);
+        const current = { ...base, ...prev[id] } as Movie;
+        if (current.title !== title) return prev; // retitled again mid-flight
+        return {
+          ...prev,
+          [id]: {
+            ...prev[id],
+            tmdbId: res.tmdbId ?? current.tmdbId,
+            posterPath: current.posterPath ?? res.posterPath,
+            releaseDate: current.releaseDate || res.releaseDate || '',
+            budget: current.budget ?? res.budget,
+            gross: current.gross ?? res.revenue,
+          },
+        };
+      });
+    });
   };
 
   const ericTotal = calcTotal(ericMovies, bonuses, 'eric');
@@ -132,6 +176,15 @@ function App() {
         </div>
 
         <BonusSection bonuses={bonuses} onGrossChange={handleBonusGrossChange} />
+
+        <MissedMovies
+          movies={missedMovies}
+          onBudgetChange={(id, val) => patchMissed(id, { budget: val })}
+          onGrossChange={(id, val) => patchMissed(id, { gross: val })}
+          onPosterChange={(id, dataUrl) => patchMissed(id, { customPoster: dataUrl })}
+          onTitleChange={handleMissedTitleChange}
+          onDateChange={(id, val) => patchMissed(id, { releaseDate: val })}
+        />
       </main>
 
       <footer className="app-footer">

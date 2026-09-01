@@ -1,0 +1,74 @@
+name: Update box office figures
+
+on:
+  schedule:
+    # 12:10 UTC daily — after Monday-morning US actuals are reported.
+    - cron: '10 12 * * *'
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: box-office-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify the safety guards still hold
+        run: node scripts/guards.test.mjs
+
+      - name: Refresh figures
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-box-office.mjs
+
+      - name: Commit any changes
+        id: commit
+        run: |
+          if git diff --quiet -- src/data/figures.json; then
+            echo "No change in figures.json."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name  "box-office-bot"
+          git config user.email "actions@github.com"
+          git add src/data/figures.json
+          git commit -m "Update box office figures $(date -u +%Y-%m-%d)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Surface any flags in the run summary
+        if: always()
+        run: |
+          node -e '
+            const f = require("./src/data/figures.json");
+            const flags = f.flags ?? [];
+            if (!flags.length) { console.log("No flags — every figure passed the guards."); process.exit(0); }
+            console.log("### Figures needing a human look\n");
+            for (const x of flags) console.log(`- **${x.kind}** ${x.id ?? ""} — ${x.detail}`);
+          ' >> "$GITHUB_STEP_SUMMARY"
+
+  # Redeploy only when the figures actually moved.
+  deploy:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
