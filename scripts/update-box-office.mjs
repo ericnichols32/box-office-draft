@@ -91,6 +91,34 @@ function daysSince(iso) {
   return Math.max(1, ms / 86_400_000);
 }
 
+/** Turns an SDK error into something actionable rather than a wall of headers. */
+export function explain(err) {
+  const message = err?.error?.error?.message ?? err?.message ?? String(err);
+  const status = err?.status;
+
+  if (/credit balance is too low/i.test(message)) {
+    return [
+      'The API key is valid, but the Anthropic account has no credits.',
+      'Fix: console.anthropic.com -> Plans & Billing -> add credits.',
+      'Then re-run this workflow from the Actions tab. Nothing was written.',
+    ].join('\n');
+  }
+  if (status === 401) {
+    return [
+      'Authentication failed — the ANTHROPIC_API_KEY secret is missing, wrong, or revoked.',
+      'Fix: gh secret set ANTHROPIC_API_KEY --repo <owner>/<repo>',
+      'Nothing was written.',
+    ].join('\n');
+  }
+  if (status === 429) {
+    return 'Rate limited by the API. Nothing was written; the next scheduled run will retry.';
+  }
+  if (status >= 500) {
+    return `Anthropic API server error (${status}). Nothing was written; the next scheduled run will retry.`;
+  }
+  return `Update failed: ${message}\nNothing was written — the existing figures are untouched.`;
+}
+
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error('ANTHROPIC_API_KEY is not set.');
@@ -215,7 +243,8 @@ async function main() {
 const invokedDirectly = process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url));
 if (invokedDirectly) {
   main().catch((err) => {
-    console.error(err);
+    console.error('\n' + explain(err) + '\n');
+    if (process.env.RUNNER_DEBUG) console.error(err);
     process.exit(1);
   });
 }
