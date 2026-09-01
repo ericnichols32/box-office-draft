@@ -167,13 +167,14 @@ async function main() {
     .slice(0, 10);
 
   if (ranked.length === 10) {
+    const before = JSON.stringify(figures.missed ?? []);
     figures.missed = ranked;
-    changed++;
+    if (JSON.stringify(ranked) !== before) changed++;
   } else {
     flags.push({ kind: 'missed-incomplete', detail: `only ${ranked.length} usable rows; kept previous list` });
   }
 
-  figures.updatedAt = new Date().toISOString();
+  if (changed > 0) figures.updatedAt = new Date().toISOString();
   figures.flags = flags;
 
   console.log(`\n${changed} field(s) changed. ${flags.length} flag(s).`);
@@ -181,6 +182,10 @@ async function main() {
 
   if (DRY_RUN) {
     console.log('\n--dry-run: nothing written.');
+    return;
+  }
+  if (changed === 0 && flags.length === 0) {
+    console.log('\nNothing moved; leaving the file untouched.');
     return;
   }
   writeFileSync(FIGURES_PATH, JSON.stringify(figures, null, 2) + '\n');
