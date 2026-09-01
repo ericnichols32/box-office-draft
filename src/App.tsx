@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { draftData } from './data/draft';
-import { useTMDB, lookupMovieByTitle } from './hooks/useTMDB';
 import { PlayerColumn } from './components/PlayerColumn';
 import { BonusSection } from './components/BonusSection';
 import { MissedMovies } from './components/MissedMovies';
@@ -89,11 +88,8 @@ function App() {
     localStorage.setItem('missed_overrides', JSON.stringify(missedOverrides));
   }, [missedOverrides]);
 
-  const ericTMDB = useTMDB(draftData.ericMovies);
-  const evanTMDB = useTMDB(draftData.evanMovies);
-
-  const ericMovies = applyMovieOverrides(ericTMDB, movieOverrides);
-  const evanMovies = applyMovieOverrides(evanTMDB, movieOverrides);
+  const ericMovies = applyMovieOverrides(draftData.ericMovies, movieOverrides);
+  const evanMovies = applyMovieOverrides(draftData.evanMovies, movieOverrides);
   const bonuses = applyBonusOverrides(draftData.bonuses, bonusOverrides);
   const missedMovies = draftData.missedMovies.map((m) => ({ ...m, ...missedOverrides[m.id] }));
 
@@ -113,29 +109,9 @@ function App() {
     setMissedOverrides((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
   };
 
+  // The scheduled job owns this list, so a hand edit is just a local override.
   const handleMissedTitleChange = (id: string, title: string) => {
     patchMissed(id, { title });
-    if (!title) return;
-    // Retitling points at a different film, so pull its poster. Budget and gross
-    // are only filled when still blank — the scheduled job owns those.
-    lookupMovieByTitle(title).then((res) => {
-      setMissedOverrides((prev) => {
-        const base = draftData.missedMovies.find((m) => m.id === id);
-        const current = { ...base, ...prev[id] } as Movie;
-        if (current.title !== title) return prev; // retitled again mid-flight
-        return {
-          ...prev,
-          [id]: {
-            ...prev[id],
-            tmdbId: res.tmdbId ?? current.tmdbId,
-            posterPath: current.posterPath ?? res.posterPath,
-            releaseDate: current.releaseDate || res.releaseDate || '',
-            budget: current.budget ?? res.budget,
-            gross: current.gross ?? res.revenue,
-          },
-        };
-      });
-    });
   };
 
   const ericTotal = calcTotal(ericMovies, bonuses, 'eric');
@@ -188,7 +164,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>Profit = Worldwide Gross − (2.5 × Production Budget) &nbsp;|&nbsp; Prediction Bonuses worth $100M each &nbsp;|&nbsp; Data via TMDB</p>
+        <p>Profit = Worldwide Gross − (2.5 × Production Budget) &nbsp;|&nbsp; Prediction Bonuses worth $100M each &nbsp;|&nbsp; Figures refreshed daily &nbsp;|&nbsp; Posters via Wikipedia</p>
       </footer>
     </div>
   );

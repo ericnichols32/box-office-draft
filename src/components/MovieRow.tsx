@@ -156,7 +156,7 @@ export const MovieRow: React.FC<Props> = ({
   let profitClass = 'profit-neutral';
   if (profit !== null) profitClass = profit >= 0 ? 'profit-positive' : 'profit-negative';
 
-  // Priority: 1) uploaded via browser  2) local file in /posters/  3) TMDB  4) placeholder
+  // Priority: 1) uploaded via browser  2) local file in /posters/  3) remote poster  4) placeholder
   // A hand-uploaded poster is deliberate, so it outranks the bundled default.
   // BASE_URL keeps this correct under the /box-office-draft/ Pages base path.
   const localPoster = `${import.meta.env.BASE_URL}posters/${movie.posterId ?? movie.id}.jpg`;
@@ -166,8 +166,8 @@ export const MovieRow: React.FC<Props> = ({
     ? movie.customPoster
     : !localPosterFailed
     ? localPoster
-    : movie.posterPath
-    ? `https://image.tmdb.org/t/p/w92${movie.posterPath}`
+    : movie.posterUrl
+    ? movie.posterUrl
     : null;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

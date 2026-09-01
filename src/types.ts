@@ -5,8 +5,7 @@ export interface Movie {
   budget: number | null; // in millions
   gross: number | null;  // in millions
   isBomb?: boolean;      // bomb pick assigned to this player
-  tmdbId?: number;
-  posterPath?: string | null;
+  posterUrl?: string | null;     // remote poster (Wikipedia), used when no local file exists
   customPoster?: string | null;  // base64 data URL from user upload
   posterId?: string;             // override filename used for /posters/{posterId}.jpg
 }

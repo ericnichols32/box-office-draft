@@ -83,7 +83,7 @@ export const MissedMovies: React.FC<Props> = ({
       </div>
 
       <div className="missed-hint">
-        Click a title to enter a movie — poster, date, budget and gross fill in from TMDB automatically.
+        Refreshed daily. Click any value to override it in this browser.
       </div>
     </div>
   );

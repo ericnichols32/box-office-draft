@@ -15,6 +15,7 @@
  * Usage: node scripts/update-box-office.mjs [--dry-run]
  */
 import Anthropic from '@anthropic-ai/sdk';
+import { fetchPosterUrl } from './wikipedia-poster.mjs';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -180,6 +181,17 @@ async function main() {
     }));
 
   if (missed.length === 10) {
+    // Carry poster URLs across for films already on the list; look up new ones.
+    const known = new Map((figures.missed ?? []).map((m) => [m.id, m.posterUrl]));
+    for (const m of missed) {
+      if (known.get(m.id)) {
+        m.posterUrl = known.get(m.id);
+        continue;
+      }
+      const { posterUrl } = await fetchPosterUrl(`${m.title} ${SEASON} film`);
+      m.posterUrl = posterUrl;
+      if (!posterUrl) flags.push({ id: m.id, kind: 'no-poster', detail: `no Wikipedia poster for "${m.title}"` });
+    }
     figures.missed = missed;
     changed++;
   } else {
