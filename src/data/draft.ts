@@ -36,18 +36,18 @@ const roster: DraftData = {
       gross: 1136.4,
     },
     {
-      id: 'odyssey',
-      title: 'The Odyssey',
-      releaseDate: 'Jul 17',
-      budget: 250,
-      gross: 1555.2,
-    },
-    {
       id: 'moana-2026',
       title: 'Moana (2026)',
       releaseDate: 'Jul 10',
       budget: 250,
       gross: 315.4,
+    },
+    {
+      id: 'odyssey',
+      title: 'The Odyssey',
+      releaseDate: 'Jul 17',
+      budget: 250,
+      gross: 1555.2,
     },
     {
       id: 'spiderman-bnd',

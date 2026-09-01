@@ -161,17 +161,19 @@ async function main() {
     }
   }
 
+  // Only films that actually made money. Fewer than ten is a valid answer —
+  // it means fewer than ten undrafted films turned a profit.
   const ranked = [...candidates.values()]
-    .filter((c) => profit(c) !== null)
+    .filter((c) => profit(c) !== null && profit(c) > 0)
     .sort((a, b) => profit(b) - profit(a))
     .slice(0, 10);
 
-  if (ranked.length === 10) {
+  if (ranked.length > 0) {
     const before = JSON.stringify(figures.missed ?? []);
     figures.missed = ranked;
     if (JSON.stringify(ranked) !== before) changed++;
   } else {
-    flags.push({ kind: 'missed-incomplete', detail: `only ${ranked.length} usable rows; kept previous list` });
+    flags.push({ kind: 'missed-empty', detail: 'no profitable undrafted films found; kept previous list' });
   }
 
   if (changed > 0) figures.updatedAt = new Date().toISOString();

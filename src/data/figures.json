@@ -188,14 +188,6 @@
       "budget": 150,
       "gross": 389.7,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Hoppers_film_poster.jpg"
-    },
-    {
-      "id": "goat",
-      "title": "Goat",
-      "releaseDate": "Feb 20",
-      "budget": 80,
-      "gross": 195.3,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e5/GOAT_poster.jpg"
     }
   ],
   "flags": []

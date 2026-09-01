@@ -31,7 +31,6 @@ export const MissedMovies: React.FC<Props> = ({
   onTitleChange,
   onDateChange,
 }) => {
-  const filled = movies.filter((m) => m.title.trim() !== '').length;
   const incomplete = movies.filter((m) => needsFigures(m)).length;
   const totalProfit = movies.reduce((sum, m) => {
     const p = calcProfit(m);
@@ -43,15 +42,11 @@ export const MissedMovies: React.FC<Props> = ({
       <div className="missed-header">
         <h3 className="missed-title">🎯 Top Missed Movies</h3>
         <div className="missed-subtitle">
-          The 10 most profitable 2026 films neither of us drafted
+          The most profitable 2026 films neither of us drafted
         </div>
       </div>
 
       <div className="missed-summary">
-        <div className="missed-summary-item">
-          <span className="missed-summary-label">Filled</span>
-          <span className="missed-summary-value">{filled}/{movies.length}</span>
-        </div>
         {incomplete > 0 && (
           <div className="missed-summary-item">
             <span className="missed-summary-label">Needs Figures</span>
