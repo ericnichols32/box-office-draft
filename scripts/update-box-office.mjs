@@ -149,9 +149,21 @@ async function main() {
     }
   }
 
+  // Ranked by profit, matching how the draft is actually scored. A film with
+  // no published budget has no computable profit and is left out rather than
+  // shown with a blank column.
+  const profit = (m) =>
+    typeof m.gross === 'number' && typeof m.budget === 'number' ? m.gross - 2.5 * m.budget : null;
+
+  for (const c of candidates.values()) {
+    if (profit(c) === null) {
+      flags.push({ id: c.id, kind: 'no-budget', detail: `${c.title} has no published budget; excluded` });
+    }
+  }
+
   const ranked = [...candidates.values()]
-    .filter((c) => typeof c.gross === 'number')
-    .sort((a, b) => b.gross - a.gross)
+    .filter((c) => profit(c) !== null)
+    .sort((a, b) => profit(b) - profit(a))
     .slice(0, 10);
 
   if (ranked.length === 10) {

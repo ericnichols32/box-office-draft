@@ -43,7 +43,7 @@ export const MissedMovies: React.FC<Props> = ({
       <div className="missed-header">
         <h3 className="missed-title">🎯 Top Missed Movies</h3>
         <div className="missed-subtitle">
-          The 10 biggest 2026 earners neither of us drafted
+          The 10 most profitable 2026 films neither of us drafted
         </div>
       </div>
 
