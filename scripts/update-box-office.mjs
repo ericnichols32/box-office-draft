@@ -1,52 +1,58 @@
 #!/usr/bin/env node
 /**
- * Refreshes box-office figures using Claude with web search, then writes
- * src/data/figures.json.
+ * Refreshes box-office figures from Wikipedia and writes src/data/figures.json.
  *
- * Two hard rules, both learned the hard way:
+ * No API key, no account, no credits — the scoreboard must keep working
+ * without anyone maintaining billing for it.
  *
- *  1. Every drafted film is looked up INDIVIDUALLY by name. Never filter a
- *     "top N" chart — a top-N chart cannot contain flops, so bombs silently
- *     vanish and every total comes out inflated.
+ * Three rules, each learned the hard way in this project:
+ *
+ *  1. Every drafted film is looked up INDIVIDUALLY from its own article. The
+ *     ranked top-grossing table is used ONLY to discover films nobody drafted,
+ *     never to read a drafted film's gross — a top-N table cannot contain a
+ *     flop, so bombs vanish from it and every total comes out inflated.
  *  2. A gross may never decrease. Box office is cumulative, so a lower number
- *     means a bad lookup (wrong film, domestic mistaken for worldwide, a stale
- *     cache), not a real change. Suspicious values are flagged, not written.
+ *     means a bad parse or the wrong article, not a real change.
+ *  3. A pinned field is a human decision and is never overwritten. Michael's
+ *     budget is $200M (production plus the estate-funded reshoots) even though
+ *     the infobox cites $155M.
  *
  * Usage: node scripts/update-box-office.mjs [--dry-run]
  */
-import Anthropic from '@anthropic-ai/sdk';
-import { fetchPosterUrl } from './wikipedia-poster.mjs';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { fetchFigures, fetchTopGrossing } from './wikipedia-figures.mjs';
+import { fetchPosterUrl } from './wikipedia-poster.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FIGURES_PATH = resolve(HERE, '../src/data/figures.json');
 const DRY_RUN = process.argv.includes('--dry-run');
 const SEASON = 2026;
 
-// A single-day jump beyond either of these is treated as a bad lookup.
 const MAX_DAILY_GROSS_JUMP_M = 400;
 const MAX_GROSS_MULTIPLIER = 2.5;
-// Budgets rarely move once a film is out, so anything past a small refinement
-// is held for review. Every budget error found by hand was 17-33%.
 const BUDGET_CHANGE_FLAG_PCT = 0.15;
 
-/**
- * Decide whether a freshly looked-up gross may replace the stored one.
- * Cumulative gross can only rise, and it cannot rise absurdly fast.
- */
+/** Cumulative gross can only rise, and not absurdly fast. */
 export function grossDecision(prev, next, elapsedDays) {
   if (typeof next !== 'number' || !Number.isFinite(next)) return { accept: false, reason: 'not-a-number' };
   if (prev === null || prev === undefined) return { accept: true, reason: 'first-value' };
-  if (next < prev) return { accept: false, reason: 'gross-decreased' };
   if (next === prev) return { accept: false, reason: 'unchanged' };
+  if (next < prev) {
+    // Infoboxes round ($1,136 million against our 1136.4). Keep the finer
+    // value silently; only a real drop is worth a human's attention.
+    const tolerance = Math.max(1, prev * 0.005);
+    return prev - next <= tolerance
+      ? { accept: false, reason: 'rounding' }
+      : { accept: false, reason: 'gross-decreased' };
+  }
   if (next - prev > MAX_DAILY_GROSS_JUMP_M * elapsedDays) return { accept: false, reason: 'gross-jump' };
   if (prev > 0 && next / prev > MAX_GROSS_MULTIPLIER) return { accept: false, reason: 'gross-jump' };
   return { accept: true, reason: 'ok' };
 }
 
-/** Budgets may be revised, but a big swing is held back for a human to confirm. */
+/** Budgets rarely move once a film is out; a real swing waits for a human. */
 export function budgetDecision(prev, next) {
   if (typeof next !== 'number' || !Number.isFinite(next) || next <= 0) return { accept: false, reason: 'not-a-number' };
   if (prev === null || prev === undefined) return { accept: true, reason: 'first-value' };
@@ -55,182 +61,111 @@ export function budgetDecision(prev, next) {
   return { accept: true, reason: 'ok' };
 }
 
-const figures = JSON.parse(readFileSync(FIGURES_PATH, 'utf8'));
-const draftedIds = Object.keys(figures.drafted);
-const draftedTitles = draftedIds.map((id) => figures.drafted[id].searchTitle);
-
-const prompt = `You are updating a box-office scoreboard for the ${SEASON} film season. Today is ${new Date().toISOString().slice(0, 10)}.
-
-TASK 1 — Look up each of these ${draftedIds.length} films INDIVIDUALLY and report its current worldwide box office gross and production budget. Search for each film by name separately. Do NOT read a "top grossing films of ${SEASON}" chart and fill in from that: films that flopped do not appear on such charts, and reporting them as "no data" corrupts the scoreboard. A film that made very little money still has a number, and that number matters as much as a blockbuster's.
-
-${draftedIds.map((id) => `- id "${id}": ${figures.drafted[id].searchTitle}`).join('\n')}
-
-For each film report:
-- worldwideGrossMillions: cumulative WORLDWIDE gross in USD millions (not domestic). null only if the film has genuinely not released yet.
-- productionBudgetMillions: production budget in USD millions. Where reporting gives a range or a figure that grew during production, use the TOTAL production spend including reshoots. null if no budget has been publicly reported.
-- confidence: "high" | "medium" | "low"
-- source: the outlet or site the figure came from
-
-TASK 2 — Identify the 10 highest-grossing films RELEASED IN ${SEASON} worldwide that are NOT any of the films above. Include films from any market (Chinese, Indian, Japanese releases count). Exclude anything released before ${SEASON}. For each give: a short kebab-case id, title, releaseDate as "MMM D", productionBudgetMillions (null if unreported), worldwideGrossMillions, and source.
-
-Reply with ONLY a JSON object in a \`\`\`json fenced block, no prose before or after:
-
-{
-  "drafted": [ { "id": "...", "worldwideGrossMillions": 0, "productionBudgetMillions": 0, "confidence": "high", "source": "..." } ],
-  "missed":  [ { "id": "...", "title": "...", "releaseDate": "MMM D", "worldwideGrossMillions": 0, "productionBudgetMillions": 0, "source": "..." } ]
-}`;
-
-function extractJson(text) {
-  const fenced = text.match(/```json\s*([\s\S]*?)```/);
-  const raw = fenced ? fenced[1] : text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
-  return JSON.parse(raw);
+/** Drops disambiguators so "The Odyssey (2026 Nolan)" matches "The Odyssey". */
+export function normalizeTitle(s) {
+  return (s ?? '')
+    .replace(/\([^)]*\)/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
 }
 
 function daysSince(iso) {
-  const ms = Date.now() - new Date(iso).getTime();
-  return Math.max(1, ms / 86_400_000);
-}
-
-/** Turns an SDK error into something actionable rather than a wall of headers. */
-export function explain(err) {
-  const message = err?.error?.error?.message ?? err?.message ?? String(err);
-  const status = err?.status;
-
-  if (/credit balance is too low/i.test(message)) {
-    return [
-      'The API key is valid, but the Anthropic account has no credits.',
-      'Fix: console.anthropic.com -> Plans & Billing -> add credits.',
-      'Then re-run this workflow from the Actions tab. Nothing was written.',
-    ].join('\n');
-  }
-  if (status === 401) {
-    return [
-      'Authentication failed — the ANTHROPIC_API_KEY secret is missing, wrong, or revoked.',
-      'Fix: gh secret set ANTHROPIC_API_KEY --repo <owner>/<repo>',
-      'Nothing was written.',
-    ].join('\n');
-  }
-  if (status === 429) {
-    return 'Rate limited by the API. Nothing was written; the next scheduled run will retry.';
-  }
-  if (status >= 500) {
-    return `Anthropic API server error (${status}). Nothing was written; the next scheduled run will retry.`;
-  }
-  return `Update failed: ${message}\nNothing was written — the existing figures are untouched.`;
+  return Math.max(1, (Date.now() - new Date(iso).getTime()) / 86_400_000);
 }
 
 async function main() {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.error('ANTHROPIC_API_KEY is not set.');
-    process.exit(1);
-  }
-
-  const client = new Anthropic();
-  console.log(`Looking up ${draftedIds.length} drafted films individually + discovering the top 10 missed...`);
-
-  const stream = client.messages.stream({
-    model: 'claude-opus-5',
-    max_tokens: 32000,
-    tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 60 }],
-    messages: [{ role: 'user', content: prompt }],
-  });
-  const response = await stream.finalMessage();
-
-  if (response.stop_reason === 'refusal') {
-    console.error('Request was declined:', response.stop_details);
-    process.exit(1);
-  }
-
-  const text = response.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n');
-  let parsed;
-  try {
-    parsed = extractJson(text);
-  } catch (err) {
-    console.error('Could not parse a JSON payload from the reply:', err.message);
-    console.error(text.slice(0, 2000));
-    process.exit(1);
-  }
-
+  const figures = JSON.parse(readFileSync(FIGURES_PATH, 'utf8'));
   const elapsedDays = daysSince(figures.updatedAt);
   const flags = [];
   let changed = 0;
 
-  for (const row of parsed.drafted ?? []) {
-    const current = figures.drafted[row.id];
-    if (!current) {
-      flags.push({ id: row.id, kind: 'unknown-id', detail: 'not in the roster; ignored' });
+  // ── 1. Drafted films, one article at a time ──────────────────────────────
+  const ids = Object.keys(figures.drafted);
+  console.log(`Looking up ${ids.length} drafted films individually...`);
+
+  for (const id of ids) {
+    const entry = figures.drafted[id];
+    const pinned = new Set(entry.pinned ?? []);
+    const found = await fetchFigures(entry.searchTitle, SEASON);
+
+    if (!found.article || found.wrongYear) {
+      // Not yet released, or the only match is a different film in the series.
       continue;
     }
 
-    // ── Gross ────────────────────────────────────────────────────────────
-    const next = row.worldwideGrossMillions;
-    const g = grossDecision(current.gross, next, elapsedDays);
-    if (g.accept) {
-      current.gross = next;
-      changed++;
-    } else if (g.reason === 'gross-decreased' || g.reason === 'gross-jump') {
-      flags.push({ id: row.id, kind: g.reason, detail: `${current.gross} -> ${next}; kept ${current.gross}`, source: row.source });
+    if (!pinned.has('gross')) {
+      const d = grossDecision(entry.gross, found.gross, elapsedDays);
+      if (d.accept) {
+        entry.gross = found.gross;
+        changed++;
+      } else if (d.reason === 'gross-decreased' || d.reason === 'gross-jump') {
+        flags.push({ id, kind: d.reason, detail: `${entry.gross} -> ${found.gross}; kept ${entry.gross}` });
+      }
     }
 
-    // ── Budget ───────────────────────────────────────────────────────────
-    const nextBudget = row.productionBudgetMillions;
-    const b = budgetDecision(current.budget, nextBudget);
-    if (b.accept) {
-      current.budget = nextBudget;
-      changed++;
-    } else if (b.reason === 'budget-swing') {
-      flags.push({ id: row.id, kind: 'budget-swing', detail: `${current.budget} -> ${nextBudget}; kept ${current.budget}`, source: row.source });
-    }
-
-    if (row.confidence === 'low') {
-      flags.push({ id: row.id, kind: 'low-confidence', detail: row.source ?? '' });
+    if (!pinned.has('budget')) {
+      const d = budgetDecision(entry.budget, found.budget);
+      if (d.accept) {
+        entry.budget = found.budget;
+        changed++;
+      } else if (d.reason === 'budget-swing') {
+        flags.push({ id, kind: 'budget-swing', detail: `${entry.budget} -> ${found.budget}; kept ${entry.budget}` });
+      }
     }
   }
 
-  // ── Missed list ────────────────────────────────────────────────────────
-  const normalize = (s) => (s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
-  const draftedNorm = new Set(draftedTitles.map(normalize));
-  const missed = (parsed.missed ?? [])
-    .filter((m) => {
-      if (draftedNorm.has(normalize(m.title))) {
-        flags.push({ id: m.id, kind: 'missed-overlaps-draft', detail: m.title });
-        return false;
-      }
-      return typeof m.worldwideGrossMillions === 'number';
-    })
-    .sort((a, b) => b.worldwideGrossMillions - a.worldwideGrossMillions)
-    .slice(0, 10)
-    .map((m) => ({
-      id: m.id,
-      title: m.title,
-      releaseDate: m.releaseDate ?? '',
-      budget: typeof m.productionBudgetMillions === 'number' ? m.productionBudgetMillions : null,
-      gross: m.worldwideGrossMillions,
-    }));
+  // ── 2. Discover films nobody drafted ─────────────────────────────────────
+  console.log('Checking the highest-grossing table for films neither player drafted...');
+  const draftedNorm = new Set(ids.map((id) => normalizeTitle(figures.drafted[id].searchTitle)));
+  const table = await fetchTopGrossing(SEASON);
 
-  if (missed.length === 10) {
-    // Carry poster URLs across for films already on the list; look up new ones.
-    const known = new Map((figures.missed ?? []).map((m) => [m.id, m.posterUrl]));
-    for (const m of missed) {
-      if (known.get(m.id)) {
-        m.posterUrl = known.get(m.id);
-        continue;
-      }
-      const { posterUrl } = await fetchPosterUrl(`${m.title} ${SEASON} film`);
-      m.posterUrl = posterUrl;
-      if (!posterUrl) flags.push({ id: m.id, kind: 'no-poster', detail: `no Wikipedia poster for "${m.title}"` });
+  // Candidates: anything in the ranked table that is not drafted, plus every
+  // film already on the missed list, so a verified entry is never silently
+  // dropped just because the table only runs ten deep.
+  const candidates = new Map();
+  for (const m of figures.missed ?? []) candidates.set(m.id, { ...m });
+  for (const row of table) {
+    if (draftedNorm.has(normalizeTitle(row.title))) continue;
+    const id = normalizeTitle(row.title).slice(0, 40) || row.title.toLowerCase();
+    const existing = [...candidates.values()].find((c) => normalizeTitle(c.title) === normalizeTitle(row.title));
+    if (existing) {
+      existing.gross = Math.max(existing.gross ?? 0, row.gross);
+      continue;
     }
-    figures.missed = missed;
+    candidates.set(id, { id, title: row.title, releaseDate: '', budget: null, gross: row.gross });
+    flags.push({ id, kind: 'new-missed-film', detail: `${row.title} entered the top 10 at $${row.gross}M` });
+  }
+
+  // Refresh each candidate from its own article, then rank.
+  for (const c of candidates.values()) {
+    const found = await fetchFigures(`${c.title} ${SEASON} film`, SEASON);
+    const d = grossDecision(c.gross, found.gross, elapsedDays);
+    if (d.accept) c.gross = found.gross;
+    if (c.budget === null && found.budget !== null) c.budget = found.budget;
+    if (!c.posterUrl) {
+      const { posterUrl } = await fetchPosterUrl(`${c.title} ${SEASON} film`);
+      c.posterUrl = posterUrl;
+      if (!posterUrl) flags.push({ id: c.id, kind: 'no-poster', detail: c.title });
+    }
+  }
+
+  const ranked = [...candidates.values()]
+    .filter((c) => typeof c.gross === 'number')
+    .sort((a, b) => b.gross - a.gross)
+    .slice(0, 10);
+
+  if (ranked.length === 10) {
+    figures.missed = ranked;
     changed++;
   } else {
-    flags.push({ kind: 'missed-incomplete', detail: `only ${missed.length} usable rows; kept previous list` });
+    flags.push({ kind: 'missed-incomplete', detail: `only ${ranked.length} usable rows; kept previous list` });
   }
 
   figures.updatedAt = new Date().toISOString();
   figures.flags = flags;
 
   console.log(`\n${changed} field(s) changed. ${flags.length} flag(s).`);
-  for (const f of flags) console.log(`  ⚠ ${f.kind} ${f.id ?? ''} — ${f.detail}`);
+  for (const f of flags) console.log(`  ! ${f.kind} ${f.id ?? ''} — ${f.detail}`);
 
   if (DRY_RUN) {
     console.log('\n--dry-run: nothing written.');
@@ -243,7 +178,7 @@ async function main() {
 const invokedDirectly = process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url));
 if (invokedDirectly) {
   main().catch((err) => {
-    console.error('\n' + explain(err) + '\n');
+    console.error(`\nUpdate failed: ${err.message}\nNothing was written — the existing figures are untouched.\n`);
     if (process.env.RUNNER_DEBUG) console.error(err);
     process.exit(1);
   });

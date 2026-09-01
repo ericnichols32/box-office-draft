@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-01T00:00:00Z",
-  "note": "Machine-managed by scripts/update-box-office.mjs. Money in USD millions. searchTitle is the real release title used for lookups, which often differs from the draft nickname.",
+  "updatedAt": "2026-09-01T20:31:47.182Z",
+  "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
       "searchTitle": "The Super Mario Galaxy Movie",
       "budget": 110,
-      "gross": 1012.5
+      "gross": 1013
     },
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
@@ -25,21 +25,21 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2333
+      "gross": 2335
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 124.6
+      "gross": 125
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 110
+      "gross": 110.3
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
-      "budget": null,
+      "budget": 40,
       "gross": null
     },
     "godzilla-minus-zero": {
@@ -60,7 +60,10 @@
     "michael": {
       "searchTitle": "Michael (2026 Jackson biopic)",
       "budget": 200,
-      "gross": 1021.4
+      "gross": 1022,
+      "pinned": [
+        "budget"
+      ]
     },
     "devil-wears-prada-2": {
       "searchTitle": "The Devil Wears Prada 2",
@@ -74,8 +77,8 @@
     },
     "mandalorian-grogu": {
       "searchTitle": "The Mandalorian and Grogu",
-      "budget": 166,
-      "gross": 345
+      "budget": 165,
+      "gross": 345.7
     },
     "scary-movie-6": {
       "searchTitle": "Scary Movie (2026 reboot)",
@@ -85,7 +88,7 @@
     "masters-universe": {
       "searchTitle": "Masters of the Universe (2026)",
       "budget": 170,
-      "gross": 113.8
+      "gross": 114
     },
     "disclosure-day": {
       "searchTitle": "Disclosure Day (2026)",
@@ -95,16 +98,16 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 513.4
+      "gross": 514
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
-      "budget": null,
+      "budget": 80,
       "gross": null
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
-      "budget": null,
+      "budget": 170,
       "gross": null
     },
     "werwulf": {
@@ -127,7 +130,7 @@
       "title": "Pegasus 3",
       "releaseDate": "Feb 17",
       "budget": 80,
-      "gross": 641.1,
+      "gross": 656.56,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/fb/Pegasus_3.jpg"
     },
     {
@@ -159,7 +162,7 @@
       "title": "Kung Fu Soccer",
       "releaseDate": "Jul 11",
       "budget": 53,
-      "gross": 306.2,
+      "gross": 321,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/be/Kung_Fu_Soccer.jpg"
     },
     {
@@ -167,7 +170,7 @@
       "title": "Dear You",
       "releaseDate": "Apr 30",
       "budget": 2.06,
-      "gross": 276.6,
+      "gross": 295.5,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dear_You_poster.png"
     },
     {
@@ -191,7 +194,7 @@
       "title": "Scream 7",
       "releaseDate": "Feb 27",
       "budget": 45,
-      "gross": 213.8,
+      "gross": 214,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c2/Scream_7_%28poster%29.jpg"
     }
   ],

@@ -31,9 +31,8 @@ jobs:
       - name: Verify the safety guards still hold
         run: node scripts/guards.test.mjs
 
+      # Sources figures from Wikipedia — no API key, no account, no billing.
       - name: Refresh figures
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/update-box-office.mjs
 
       - name: Commit any changes

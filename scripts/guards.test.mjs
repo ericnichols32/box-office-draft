@@ -25,6 +25,14 @@ t('growth after a long gap is accepted', () => {
   assert.equal(grossDecision(500, 1200, 7).accept, true); // 700 over 7d = 100/d
 });
 
+t('infobox rounding is absorbed silently, not flagged', () => {
+  assert.equal(grossDecision(1136.4, 1136, 1).reason, 'rounding');
+  assert.equal(grossDecision(231.5, 231.4, 1).reason, 'rounding');
+});
+t('a real drop is still caught despite the tolerance', () => {
+  assert.equal(grossDecision(2333, 891.5, 1).reason, 'gross-decreased');
+});
+
 // ── Implausible jumps are held, not written ──
 t('an absurd one-day jump is rejected', () => {
   const d = grossDecision(200, 1500, 1);
