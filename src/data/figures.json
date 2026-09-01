@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T20:31:47.182Z",
+  "updatedAt": "2026-09-01T20:34:54.335Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
