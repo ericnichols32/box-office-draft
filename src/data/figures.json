@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T20:34:54.335Z",
+  "updatedAt": "2026-09-02T16:34:05.127Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -30,12 +30,12 @@
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 125
+      "gross": 125.2
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 110.3
+      "gross": 111
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -138,7 +138,7 @@
       "title": "Backrooms",
       "releaseDate": "May 29",
       "budget": 10,
-      "gross": 393.2,
+      "gross": 394.1,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3d/Backrooms_%28film%29_poster.jpg"
     },
     {
