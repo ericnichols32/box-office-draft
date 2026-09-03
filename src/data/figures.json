@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T16:34:05.127Z",
+  "updatedAt": "2026-09-03T16:24:43.574Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1555.2
+      "gross": 1557
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -25,17 +25,17 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2335
+      "gross": 2340
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 125.2
+      "gross": 125.8
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 111
+      "gross": 113
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
