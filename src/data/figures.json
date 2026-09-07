@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T15:27:15.127Z",
+  "updatedAt": "2026-09-07T17:45:34.362Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,32 +10,32 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1137
+      "gross": 1138
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1589
+      "gross": 1632
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
       "budget": 250,
-      "gross": 315.4
+      "gross": 315.5
     },
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2345
+      "gross": 2408
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 127.2
+      "gross": 138
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 115
+      "gross": 139.2
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -78,7 +78,7 @@
     "mandalorian-grogu": {
       "searchTitle": "The Mandalorian and Grogu",
       "budget": 165,
-      "gross": 345.7
+      "gross": 345.8
     },
     "scary-movie-6": {
       "searchTitle": "Scary Movie (2026 reboot)",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 516
+      "gross": 518
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 505.7,
+      "gross": 509.9,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
