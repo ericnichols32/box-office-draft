@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T17:45:34.362Z",
+  "updatedAt": "2026-09-09T16:37:13.846Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,22 +10,22 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1138
+      "gross": 1142
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1632
+      "gross": 1638
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
       "budget": 250,
-      "gross": 315.5
+      "gross": 319.9
     },
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2408
+      "gross": 2412
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -35,7 +35,7 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 139.2
+      "gross": 140
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -68,12 +68,12 @@
     "devil-wears-prada-2": {
       "searchTitle": "The Devil Wears Prada 2",
       "budget": 100,
-      "gross": 692.8
+      "gross": 693.1
     },
     "mortal-kombat-2": {
       "searchTitle": "Mortal Kombat II (2026)",
       "budget": 80,
-      "gross": 129.47
+      "gross": 129.5
     },
     "mandalorian-grogu": {
       "searchTitle": "The Mandalorian and Grogu",
@@ -83,7 +83,7 @@
     "scary-movie-6": {
       "searchTitle": "Scary Movie (2026 reboot)",
       "budget": 30,
-      "gross": 231.5
+      "gross": 231.9
     },
     "masters-universe": {
       "searchTitle": "Masters of the Universe (2026)",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 518
+      "gross": 519
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 509.9,
+      "gross": 512.62,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
