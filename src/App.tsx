@@ -28,10 +28,13 @@ function applyMovieOverrides(movies: Movie[], overrides: MovieOverrides): Movie[
   return movies.map((m) => {
     const ov = overrides[m.id];
     if (!ov) return m;
+    // A number typed in the browser only fills a gap. Once the daily job has a
+    // figure it wins — otherwise an old hand entry hides every later update.
+    // Uploaded posters are a deliberate choice and still take priority.
     return {
       ...m,
-      budget: 'budget' in ov ? ov.budget ?? m.budget : m.budget,
-      gross: 'gross' in ov ? ov.gross ?? m.gross : m.gross,
+      budget: m.budget === null && 'budget' in ov ? ov.budget ?? null : m.budget,
+      gross: m.gross === null && 'gross' in ov ? ov.gross ?? null : m.gross,
       customPoster: 'customPoster' in ov ? ov.customPoster : m.customPoster,
     };
   });
