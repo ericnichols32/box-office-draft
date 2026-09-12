@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T16:27:23.397Z",
+  "updatedAt": "2026-09-12T15:30:50.267Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1650
+      "gross": 1654
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2413
+      "gross": 2415
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 519
+      "gross": 520
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -162,7 +162,7 @@
       "title": "Project Hail Mary",
       "releaseDate": "Mar 20",
       "budget": 200,
-      "gross": 685.1,
+      "gross": 685.13,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Project_Hail_Mary_poster.jpg"
     },
     {
