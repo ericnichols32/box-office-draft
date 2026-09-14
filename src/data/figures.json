@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13T16:15:27.503Z",
+  "updatedAt": "2026-09-14T14:56:05.863Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -30,12 +30,12 @@
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 146
+      "gross": 146.4
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 142
+      "gross": 155.2
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
