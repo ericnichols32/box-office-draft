@@ -23,7 +23,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # When called by the daily update, the default checkout is the commit the
+      # run started from — before it saved new figures — so every deploy
+      # shipped the previous day's numbers. Build from the branch tip instead.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - uses: actions/setup-node@v4
         with:
