@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T16:23:09.363Z",
+  "updatedAt": "2026-09-19T15:52:10.169Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,12 +15,12 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1695
+      "gross": 1696
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
       "budget": 250,
-      "gross": 321.9
+      "gross": 322
     },
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
@@ -35,7 +35,7 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 156.5
+      "gross": 156.8
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -138,7 +138,7 @@
       "title": "Backrooms",
       "releaseDate": "May 29",
       "budget": 10,
-      "gross": 394.1,
+      "gross": 402.5,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3d/Backrooms_%28film%29_poster.jpg"
     },
     {
@@ -190,5 +190,11 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Hoppers_film_poster.jpg"
     }
   ],
-  "flags": []
+  "flags": [
+    {
+      "id": "resident-evil-2026",
+      "kind": "gross-jump",
+      "detail": "8.8 -> 26; kept 8.8"
+    }
+  ]
 }
