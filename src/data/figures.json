@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T16:03:25.874Z",
+  "updatedAt": "2026-09-21T18:13:35.959Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,7 +10,7 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1144
+      "gross": 1145
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
@@ -25,17 +25,17 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2460
+      "gross": 2479
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 147
+      "gross": 152
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 158.6
+      "gross": 164
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 514,
+      "gross": 517,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
