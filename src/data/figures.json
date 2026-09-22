@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T18:13:35.959Z",
+  "updatedAt": "2026-09-22T16:56:18.743Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,17 +10,17 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1145
+      "gross": 1146
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1721
+      "gross": 1724
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
       "budget": 250,
-      "gross": 322
+      "gross": 323
     },
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
@@ -60,7 +60,7 @@
     "michael": {
       "searchTitle": "Michael (2026 Jackson biopic)",
       "budget": 200,
-      "gross": 1028,
+      "gross": 1029,
       "pinned": [
         "budget"
       ]
@@ -68,7 +68,7 @@
     "devil-wears-prada-2": {
       "searchTitle": "The Devil Wears Prada 2",
       "budget": 100,
-      "gross": 693.1
+      "gross": 693.2
     },
     "mortal-kombat-2": {
       "searchTitle": "Mortal Kombat II (2026)",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 522
+      "gross": 524
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 517,
+      "gross": 519.52,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
@@ -194,7 +194,7 @@
     {
       "id": "resident-evil-2026",
       "kind": "gross-jump",
-      "detail": "8.8 -> 108.3; kept 8.8"
+      "detail": "8.8 -> 113.8; kept 8.8"
     }
   ]
 }
