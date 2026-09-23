@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T16:56:18.743Z",
+  "updatedAt": "2026-09-23T16:55:34.857Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1724
+      "gross": 1726
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -194,7 +194,7 @@
     {
       "id": "resident-evil-2026",
       "kind": "gross-jump",
-      "detail": "8.8 -> 113.8; kept 8.8"
+      "detail": "8.8 -> 120.8; kept 8.8"
     }
   ]
 }
