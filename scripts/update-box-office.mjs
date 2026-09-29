@@ -32,6 +32,9 @@ const SEASON = 2026;
 
 const MAX_DAILY_GROSS_JUMP_M = 400;
 const MAX_GROSS_MULTIPLIER = 2.5;
+// Below this, a stored gross is probably an opening/previews figure rather than
+// a settled total, so the multiplier ceiling does not apply to it.
+const MULTIPLIER_FLOOR_M = 50;
 const BUDGET_CHANGE_FLAG_PCT = 0.15;
 
 /** Cumulative gross can only rise, and not absurdly fast. */
@@ -48,7 +51,14 @@ export function grossDecision(prev, next, elapsedDays) {
       : { accept: false, reason: 'gross-decreased' };
   }
   if (next - prev > MAX_DAILY_GROSS_JUMP_M * elapsedDays) return { accept: false, reason: 'gross-jump' };
-  if (prev > 0 && next / prev > MAX_GROSS_MULTIPLIER) return { accept: false, reason: 'gross-jump' };
+  // The multiplier ceiling only makes sense once the stored value is a real
+  // cumulative total. A film's opening days legitimately multiply many times
+  // over: Resident Evil's infobox showed an $8.8M previews figure, and the
+  // jump to $197.2M was rejected as 22x every day for twelve days. Below the
+  // floor, the absolute daily cap above is the protection that matters.
+  if (prev >= MULTIPLIER_FLOOR_M && next / prev > MAX_GROSS_MULTIPLIER) {
+    return { accept: false, reason: 'gross-jump' };
+  }
   return { accept: true, reason: 'ok' };
 }
 

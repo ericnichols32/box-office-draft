@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29T12:11:14.942Z",
+  "updatedAt": "2026-09-29T12:15:24.480Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 8.8
+      "gross": 197.2
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -190,11 +190,5 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Hoppers_film_poster.jpg"
     }
   ],
-  "flags": [
-    {
-      "id": "resident-evil-2026",
-      "kind": "gross-jump",
-      "detail": "8.8 -> 197.2; kept 8.8"
-    }
-  ]
+  "flags": []
 }

@@ -39,10 +39,19 @@ t('an absurd one-day jump is rejected', () => {
   assert.equal(d.accept, false);
   assert.equal(d.reason, 'gross-jump');
 });
-t('a >2.5x multiplier is rejected even within the daily cap', () => {
-  const d = grossDecision(10, 120, 30); // small abs jump, 12x multiplier
-  assert.equal(d.accept, false);
-  assert.equal(d.reason, 'gross-jump');
+t('a previews figure may grow into a real total (Resident Evil 8.8 -> 197.2)', () => {
+  assert.equal(grossDecision(8.8, 197.2, 1).accept, true);
+});
+t('a small stored value still cannot make an absurd absolute leap', () => {
+  assert.equal(grossDecision(8.8, 900, 1).reason, 'gross-jump');
+});
+t('an established total keeps its multiplier ceiling', () => {
+  assert.equal(grossDecision(100, 300, 5).reason, 'gross-jump');
+});
+t('below the floor the multiplier ceiling does not apply', () => {
+  // 10 -> 120 is 12x, but a $10M stored value is an opening figure, not a
+  // settled total, so this growth is real and must be allowed through.
+  assert.equal(grossDecision(10, 120, 30).accept, true);
 });
 
 // ── Budgets ──
