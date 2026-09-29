@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T19:41:02.394Z",
+  "updatedAt": "2026-09-29T12:11:14.942Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,7 +10,7 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1146
+      "gross": 1147
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
@@ -35,7 +35,7 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 166
+      "gross": 168
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 524
+      "gross": 525
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -194,7 +194,7 @@
     {
       "id": "resident-evil-2026",
       "kind": "gross-jump",
-      "detail": "8.8 -> 196.5; kept 8.8"
+      "detail": "8.8 -> 197.2; kept 8.8"
     }
   ]
 }
