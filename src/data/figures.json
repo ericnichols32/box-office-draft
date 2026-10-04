@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T16:16:07.326Z",
+  "updatedAt": "2026-10-04T16:51:49.951Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2497
+      "gross": 2505
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -35,7 +35,7 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 168
+      "gross": 168.1
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 212.4
+      "gross": 216
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
