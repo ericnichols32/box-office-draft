@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T16:51:49.951Z",
+  "updatedAt": "2026-10-06T18:20:53.082Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,32 +10,32 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1147
+      "gross": 1148
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1760
+      "gross": 1770
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
       "budget": 250,
-      "gross": 323.4
+      "gross": 323.6
     },
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2505
+      "gross": 2506
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 155
+      "gross": 157.8
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 168.1
+      "gross": 169.5
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -93,7 +93,7 @@
     "disclosure-day": {
       "searchTitle": "Disclosure Day (2026)",
       "budget": 115,
-      "gross": 241.3
+      "gross": 243.8
     },
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 216
+      "gross": 247.7
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 519.52,
+      "gross": 520.01,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
