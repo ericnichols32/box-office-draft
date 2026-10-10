@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T18:21:28.916Z",
+  "updatedAt": "2026-10-10T17:21:08.392Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -93,7 +93,7 @@
     "disclosure-day": {
       "searchTitle": "Disclosure Day (2026)",
       "budget": 115,
-      "gross": 243.8
+      "gross": 244.4
     },
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 251.6
+      "gross": 254
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
