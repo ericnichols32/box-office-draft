@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T14:11:20.927Z",
+  "updatedAt": "2026-10-15T16:59:41.731Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 324.3
+      "gross": 325
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -211,6 +211,18 @@
     "dhurandhartherevenge": null,
     "booniebearsthehiddenprot": null,
     "heartofthebeast": 82,
-    "thesheepdetectives": 75
+    "thesheepdetectives": 75,
+    "supergirl": 170,
+    "theendofoakstreet": 80,
+    "verity": 40,
+    "practicalmagic2": 75,
+    "coyotevsacme": 70,
+    "detectiveconanfallenangel": null,
+    "sendhelp": 40,
+    "v": 250,
+    "leecroninsthemummy": 22,
+    "remindersofhim": 25,
+    "cheburashka2": 19.8,
+    "vanishingpoint": null
   }
 }
