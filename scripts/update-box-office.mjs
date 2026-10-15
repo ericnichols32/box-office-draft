@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { fetchFigures, fetchTopGrossing } from './wikipedia-figures.mjs';
+import { fetchNumbersChart } from './numbers-chart.mjs';
 import { fetchPosterUrl } from './wikipedia-poster.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -35,6 +36,10 @@ const MAX_GROSS_MULTIPLIER = 2.5;
 // Below this, a stored gross is probably an opening/previews figure rather than
 // a settled total, so the multiplier ceiling does not apply to it.
 const MULTIPLIER_FLOOR_M = 50;
+// How far down the deeper gross chart to look, and how many unseen titles may
+// cost a Wikipedia lookup in one run. The rest are picked up on later runs.
+const DEEP_CHART_ROWS = 60;
+const MAX_NEW_LOOKUPS_PER_RUN = 12;
 const BUDGET_CHANGE_FLAG_PCT = 0.15;
 
 /** Cumulative gross can only rise, and not absurdly fast. */
@@ -143,7 +148,40 @@ async function main() {
       continue;
     }
     candidates.set(id, { id, title: row.title, releaseDate: '', budget: null, gross: row.gross });
-    flags.push({ id, kind: 'new-missed-film', detail: `${row.title} entered the top 10 at $${row.gross}M` });
+  }
+
+  // The Wikipedia table is only ten deep and every row of it is already either
+  // drafted or listed, so on its own it discovers nothing. Scan a far deeper
+  // gross chart as well: ranked by profit, a cheap film outside the gross top
+  // ten can belong near the top of this list.
+  //
+  // Budgets are cached per title so each run only spends Wikipedia lookups on
+  // titles never seen before, and only a few of those per run.
+  figures.candidateBudgets ??= {};
+  try {
+    const deep = await fetchNumbersChart(SEASON);
+    let lookups = 0;
+    for (const row of deep.slice(0, DEEP_CHART_ROWS)) {
+      const key = normalizeTitle(row.title);
+      if (!key || draftedNorm.has(key)) continue;
+      if ([...candidates.values()].some((c) => normalizeTitle(c.title) === key)) continue;
+
+      if (!(key in figures.candidateBudgets)) {
+        if (lookups >= MAX_NEW_LOOKUPS_PER_RUN) continue; // picked up on a later run
+        lookups++;
+        const found = await fetchFigures(`${row.title} ${SEASON} film`, SEASON);
+        figures.candidateBudgets[key] = found.budget;
+      }
+
+      const budget = figures.candidateBudgets[key];
+      if (budget === null || budget === undefined) continue; // no published budget, no profit
+      if (row.gross - 2.5 * budget <= 0) continue; // not profitable, nothing to add
+
+      const id = key.slice(0, 40);
+      candidates.set(id, { id, title: row.title, releaseDate: '', budget, gross: row.gross });
+    }
+  } catch (err) {
+    flags.push({ kind: 'deep-chart-unavailable', detail: err.message });
   }
 
   // Refresh each candidate from its own article, then rank.
@@ -177,6 +215,21 @@ async function main() {
     .filter((c) => profit(c) !== null && profit(c) > 0)
     .sort((a, b) => profit(b) - profit(a))
     .slice(0, 10);
+
+  // Report only what actually joined or left the list — a film that qualifies
+  // but ranks below the cut is not news, and flagging it would fire daily.
+  const previousIds = new Set((figures.missed ?? []).map((m) => m.id));
+  const rankedIds = new Set(ranked.map((m) => m.id));
+  for (const m of ranked) {
+    if (!previousIds.has(m.id)) {
+      flags.push({ id: m.id, kind: 'new-missed-film', detail: `${m.title} joined at +$${profit(m).toFixed(1)}M` });
+    }
+  }
+  for (const m of figures.missed ?? []) {
+    if (!rankedIds.has(m.id)) {
+      flags.push({ id: m.id, kind: 'dropped-missed-film', detail: `${m.title} fell off the list` });
+    }
+  }
 
   if (ranked.length > 0) {
     const before = JSON.stringify(figures.missed ?? []);

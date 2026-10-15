@@ -103,7 +103,11 @@ export function releasedInYear(wikitext, year) {
  */
 export async function fetchFigures(query, year) {
   try {
-    const candidates = await findArticle(query);
+    // Try the query as an exact article title first. Wikipedia's fuzzy search
+    // can rank an unrelated article above the real one — "Once Upon a Time in
+    // the Middle East" resolved to "Once Upon ay Time in Mumbai Dobaara!" —
+    // so an exact hit should always win.
+    const candidates = [query, ...(await findArticle(query))];
     let fallback = null;
     for (const title of candidates) {
       const wikitext = await articleWikitext(title);
