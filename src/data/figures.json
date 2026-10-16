@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T16:59:41.731Z",
+  "updatedAt": "2026-10-16T16:38:25.857Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1783
+      "gross": 1784
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2513
+      "gross": 2514
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -98,7 +98,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 526
+      "gross": 527
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -122,7 +122,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 522.2,
+      "gross": 523,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
@@ -190,15 +190,26 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/54/The_Drama_%28film%29_poster.jpg"
     },
     {
-      "id": "wuthering-heights",
-      "title": "Wuthering Heights",
-      "releaseDate": "Feb 13",
-      "budget": 80,
-      "gross": 241.7,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f9/Wuthering_Heights_%282026_film%29_poster.png"
+      "id": "ironlung",
+      "title": "Iron Lung",
+      "releaseDate": "",
+      "budget": 3,
+      "gross": 51.23,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/af/Iron_Lung_%28film%29_poster.jpg"
     }
   ],
-  "flags": [],
+  "flags": [
+    {
+      "id": "ironlung",
+      "kind": "new-missed-film",
+      "detail": "Iron Lung joined at +$43.7M"
+    },
+    {
+      "id": "wuthering-heights",
+      "kind": "dropped-missed-film",
+      "detail": "Wuthering Heights fell off the list"
+    }
+  ],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
@@ -223,6 +234,18 @@
     "leecroninsthemummy": 22,
     "remindersofhim": 25,
     "cheburashka2": 19.8,
-    "vanishingpoint": null
+    "vanishingpoint": null,
+    "crime101": 90,
+    "evildeadburn": 20,
+    "theinvite": 15,
+    "othermommy": 18,
+    "28yearslaterthebonetemp": null,
+    "tracesofjustice": 29,
+    "colony": null,
+    "forgottenisland": 80,
+    "mercy": 60,
+    "ironlung": 3,
+    "shelter": 50,
+    "youngwashington": 20
   }
 }
