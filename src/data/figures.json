@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T16:38:25.857Z",
+  "updatedAt": "2026-10-17T15:32:03.918Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 325
+      "gross": 327
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -154,7 +154,7 @@
       "title": "Kung Fu Soccer",
       "releaseDate": "Jul 11",
       "budget": 53,
-      "gross": 349,
+      "gross": 351.1,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/be/Kung_Fu_Soccer.jpg"
     },
     {
@@ -200,14 +200,9 @@
   ],
   "flags": [
     {
-      "id": "ironlung",
-      "kind": "new-missed-film",
-      "detail": "Iron Lung joined at +$43.7M"
-    },
-    {
-      "id": "wuthering-heights",
-      "kind": "dropped-missed-film",
-      "detail": "Wuthering Heights fell off the list"
+      "id": "clayface",
+      "kind": "budget-swing",
+      "detail": "40 -> 30; kept 40"
     }
   ],
   "candidateBudgets": {
@@ -246,6 +241,7 @@
     "mercy": 60,
     "ironlung": 3,
     "shelter": 50,
-    "youngwashington": 20
+    "youngwashington": 20,
+    "wutheringheights": 80
   }
 }
