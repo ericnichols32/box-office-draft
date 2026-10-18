@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T15:32:03.918Z",
+  "updatedAt": "2026-10-18T15:51:43.361Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 327
+      "gross": 328
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -190,12 +190,12 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/54/The_Drama_%28film%29_poster.jpg"
     },
     {
-      "id": "ironlung",
-      "title": "Iron Lung",
+      "id": "verity",
+      "title": "Verity",
       "releaseDate": "",
-      "budget": 3,
-      "gross": 51.23,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/af/Iron_Lung_%28film%29_poster.jpg"
+      "budget": 40,
+      "gross": 145.29,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
   "flags": [
@@ -203,6 +203,16 @@
       "id": "clayface",
       "kind": "budget-swing",
       "detail": "40 -> 30; kept 40"
+    },
+    {
+      "id": "verity",
+      "kind": "new-missed-film",
+      "detail": "Verity joined at +$45.3M"
+    },
+    {
+      "id": "ironlung",
+      "kind": "dropped-missed-film",
+      "detail": "Iron Lung fell off the list"
     }
   ],
   "candidateBudgets": {
@@ -242,6 +252,7 @@
     "ironlung": 3,
     "shelter": 50,
     "youngwashington": 20,
-    "wutheringheights": 80
+    "wutheringheights": 80,
+    "streetfighter": 82
   }
 }
