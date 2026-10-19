@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T15:51:43.361Z",
+  "updatedAt": "2026-10-19T18:44:57.151Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1784
+      "gross": 1789
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2514
+      "gross": 2516
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -103,7 +103,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 328
+      "gross": 361
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -194,7 +194,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 145.29,
+      "gross": 145.3,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
@@ -203,16 +203,6 @@
       "id": "clayface",
       "kind": "budget-swing",
       "detail": "40 -> 30; kept 40"
-    },
-    {
-      "id": "verity",
-      "kind": "new-missed-film",
-      "detail": "Verity joined at +$45.3M"
-    },
-    {
-      "id": "ironlung",
-      "kind": "dropped-missed-film",
-      "detail": "Iron Lung fell off the list"
     }
   ],
   "candidateBudgets": {
