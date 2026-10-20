@@ -39,8 +39,11 @@
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
-      "budget": 40,
-      "gross": null
+      "budget": 30,
+      "gross": null,
+      "pinned": [
+        "budget"
+      ]
     },
     "godzilla-minus-zero": {
       "searchTitle": "Godzilla Minus Zero",
