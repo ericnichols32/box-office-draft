@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T17:01:24.807Z",
+  "updatedAt": "2026-10-21T17:10:33.338Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,12 +10,12 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1148
+      "gross": 1149
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1789
+      "gross": 1790
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -96,7 +96,7 @@
     "disclosure-day": {
       "searchTitle": "Disclosure Day (2026)",
       "budget": 115,
-      "gross": 244.4
+      "gross": 246.8
     },
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
@@ -197,17 +197,11 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 145.3,
+      "gross": 145.7,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
-  "flags": [
-    {
-      "id": "clayface",
-      "kind": "budget-swing",
-      "detail": "40 -> 30; kept 40"
-    }
-  ],
+  "flags": [],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
