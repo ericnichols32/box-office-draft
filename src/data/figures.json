@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T17:05:44.150Z",
+  "updatedAt": "2026-10-24T15:55:54.821Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -35,12 +35,12 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 170.3
+      "gross": 170.7
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 3.5,
+      "gross": 10.4,
       "pinned": [
         "budget"
       ]
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 363
+      "gross": 364
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -197,7 +197,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 147.2,
+      "gross": 149,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
