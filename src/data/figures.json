@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T16:13:50.534Z",
+  "updatedAt": "2026-10-26T18:42:43.219Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1792
+      "gross": 1794
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -30,7 +30,7 @@
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
       "budget": 40,
-      "gross": 159.5
+      "gross": 160
     },
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
@@ -101,7 +101,7 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 527
+      "gross": 528
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
@@ -125,7 +125,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 523,
+      "gross": 523.26,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
@@ -241,6 +241,7 @@
     "youngwashington": 20,
     "wutheringheights": 80,
     "streetfighter": 82,
-    "drishyamtheconclusion": null
+    "drishyamtheconclusion": null,
+    "jailer2": null
   }
 }
