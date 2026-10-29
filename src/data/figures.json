@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T18:22:21.149Z",
+  "updatedAt": "2026-10-29T18:28:58.853Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1796
+      "gross": 1816
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 50.8,
+      "gross": 52.8,
       "pinned": [
         "budget"
       ]
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 384.5
+      "gross": 384.6
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -197,7 +197,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 162.7,
+      "gross": 163.2,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
