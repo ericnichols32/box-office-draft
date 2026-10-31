@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T18:01:39.540Z",
+  "updatedAt": "2026-10-31T17:17:15.228Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 59.6,
+      "gross": 68.3,
       "pinned": [
         "budget"
       ]
@@ -197,7 +197,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 163.5,
+      "gross": 163.7,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
@@ -242,6 +242,7 @@
     "wutheringheights": 80,
     "streetfighter": 82,
     "drishyamtheconclusion": null,
-    "jailer2": null
+    "jailer2": null,
+    "youcanseeeverything": 7
   }
 }
