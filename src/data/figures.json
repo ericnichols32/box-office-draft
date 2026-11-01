@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T17:17:15.228Z",
+  "updatedAt": "2026-11-01T17:58:21.145Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 68.3,
+      "gross": 83,
       "pinned": [
         "budget"
       ]
@@ -101,12 +101,12 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 528
+      "gross": 529
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 385.2
+      "gross": 400
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -125,7 +125,7 @@
       "title": "Obsession",
       "releaseDate": "May 15",
       "budget": 0.75,
-      "gross": 523.26,
+      "gross": 525.09,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/05/Obsession_theatrical_poster.jpeg"
     },
     {
@@ -185,20 +185,20 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c2/Scream_7_%28poster%29.jpg"
     },
     {
+      "id": "verity",
+      "title": "Verity",
+      "releaseDate": "",
+      "budget": 40,
+      "gross": 172.4,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
+    },
+    {
       "id": "the-drama",
       "title": "The Drama",
       "releaseDate": "Apr 3",
       "budget": 28,
       "gross": 134.9,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/54/The_Drama_%28film%29_poster.jpg"
-    },
-    {
-      "id": "verity",
-      "title": "Verity",
-      "releaseDate": "",
-      "budget": 40,
-      "gross": 163.7,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     }
   ],
   "flags": [],
