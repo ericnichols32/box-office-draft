@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T17:58:21.145Z",
+  "updatedAt": "2026-11-03T19:31:32.633Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1816
+      "gross": 1821
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2520
+      "gross": 2521
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 83,
+      "gross": 84.8,
       "pinned": [
         "budget"
       ]
@@ -189,7 +189,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 172.4,
+      "gross": 172.5,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
