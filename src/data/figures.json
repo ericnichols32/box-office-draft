@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T19:46:04.237Z",
+  "updatedAt": "2026-11-05T19:57:03.223Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 87,
+      "gross": 91.8,
       "pinned": [
         "budget"
       ]
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 400
+      "gross": 401
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -189,19 +189,30 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 172.8,
+      "gross": 173.1,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
-      "id": "the-drama",
-      "title": "The Drama",
-      "releaseDate": "Apr 3",
-      "budget": 28,
-      "gross": 134.9,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/54/The_Drama_%28film%29_poster.jpg"
+      "id": "othermommy",
+      "title": "Other Mommy",
+      "releaseDate": "",
+      "budget": 18,
+      "gross": 110,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
-  "flags": [],
+  "flags": [
+    {
+      "id": "othermommy",
+      "kind": "new-missed-film",
+      "detail": "Other Mommy joined at +$65.0M"
+    },
+    {
+      "id": "the-drama",
+      "kind": "dropped-missed-film",
+      "detail": "The Drama fell off the list"
+    }
+  ],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
