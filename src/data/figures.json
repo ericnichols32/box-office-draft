@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T19:57:03.223Z",
+  "updatedAt": "2026-11-06T19:23:24.752Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -35,7 +35,7 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 171.5
+      "gross": 171.6
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
@@ -189,7 +189,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 173.1,
+      "gross": 173.3,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
@@ -201,18 +201,7 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
-  "flags": [
-    {
-      "id": "othermommy",
-      "kind": "new-missed-film",
-      "detail": "Other Mommy joined at +$65.0M"
-    },
-    {
-      "id": "the-drama",
-      "kind": "dropped-missed-film",
-      "detail": "The Drama fell off the list"
-    }
-  ],
+  "flags": [],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
@@ -254,6 +243,7 @@
     "streetfighter": 82,
     "drishyamtheconclusion": null,
     "jailer2": null,
-    "youcanseeeverything": 7
+    "youcanseeeverything": 7,
+    "thedrama": 28
   }
 }
