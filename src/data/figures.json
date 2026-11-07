@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T19:23:24.752Z",
+  "updatedAt": "2026-11-07T17:47:06.371Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 91.8,
+      "gross": 98.4,
       "pinned": [
         "budget"
       ]
@@ -189,7 +189,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 173.3,
+      "gross": 173.4,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
@@ -197,11 +197,17 @@
       "title": "Other Mommy",
       "releaseDate": "",
       "budget": 18,
-      "gross": 110,
+      "gross": 111,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
-  "flags": [],
+  "flags": [
+    {
+      "id": "odyssey",
+      "kind": "gross-decreased",
+      "detail": "1821 -> 1802; kept 1821"
+    }
+  ],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
