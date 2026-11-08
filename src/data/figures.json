@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:47:06.371Z",
+  "updatedAt": "2026-11-08T17:57:54.982Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 98.4,
+      "gross": 109,
       "pinned": [
         "budget"
       ]
@@ -76,7 +76,7 @@
     "mortal-kombat-2": {
       "searchTitle": "Mortal Kombat II (2026)",
       "budget": 80,
-      "gross": 129.5
+      "gross": 130
     },
     "mandalorian-grogu": {
       "searchTitle": "The Mandalorian and Grogu",
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 401
+      "gross": 409.7
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -189,7 +189,7 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 173.4,
+      "gross": 178,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
@@ -197,7 +197,7 @@
       "title": "Other Mommy",
       "releaseDate": "",
       "budget": 18,
-      "gross": 111,
+      "gross": 115.3,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
@@ -250,6 +250,7 @@
     "drishyamtheconclusion": null,
     "jailer2": null,
     "youcanseeeverything": 7,
-    "thedrama": 28
+    "thedrama": 28,
+    "godzillaminuszero0": null
   }
 }
