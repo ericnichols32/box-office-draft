@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T19:36:38.855Z",
+  "updatedAt": "2026-11-12T19:55:11.547Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2521
+      "gross": 2523
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 109.7,
+      "gross": 111.8,
       "pinned": [
         "budget"
       ]
@@ -101,12 +101,12 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 529
+      "gross": 530
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 409.7
+      "gross": 410
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -197,7 +197,7 @@
       "title": "Other Mommy",
       "releaseDate": "",
       "budget": 18,
-      "gross": 115.5,
+      "gross": 116,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
@@ -205,7 +205,7 @@
     {
       "id": "odyssey",
       "kind": "gross-decreased",
-      "detail": "1821 -> 1803; kept 1821"
+      "detail": "1821 -> 1804; kept 1821"
     }
   ],
   "candidateBudgets": {
