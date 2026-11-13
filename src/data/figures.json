@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T19:55:11.547Z",
+  "updatedAt": "2026-11-13T19:40:32.179Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 111.8,
+      "gross": 112.3,
       "pinned": [
         "budget"
       ]
@@ -253,6 +253,7 @@
     "thedrama": 28,
     "godzillaminuszero0": null,
     "eigachiikawaningyonoshim": null,
-    "ramayanapart1": null
+    "ramayanapart1": null,
+    "wildwood": 100
   }
 }
