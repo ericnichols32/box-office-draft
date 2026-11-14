@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T19:40:32.179Z",
+  "updatedAt": "2026-11-14T18:01:02.942Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 112.3,
+      "gross": 114.6,
       "pinned": [
         "budget"
       ]
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 410
+      "gross": 410.1
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -197,7 +197,7 @@
       "title": "Other Mommy",
       "releaseDate": "",
       "budget": 18,
-      "gross": 116,
+      "gross": 117.1,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
     }
   ],
