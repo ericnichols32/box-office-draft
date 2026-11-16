@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T18:50:39.478Z",
+  "updatedAt": "2026-11-16T22:00:45.418Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 116.6,
+      "gross": 121.3,
       "pinned": [
         "budget"
       ]
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 410.2
+      "gross": 416.2
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -189,16 +189,16 @@
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
-      "gross": 179,
+      "gross": 181,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
     },
     {
-      "id": "othermommy",
-      "title": "Other Mommy",
+      "id": "youcanseeeverything",
+      "title": "You Can See Everything",
       "releaseDate": "",
-      "budget": 18,
-      "gross": 119.1,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Other_Mommy_poster.jpg"
+      "budget": 7,
+      "gross": 91.96,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     }
   ],
   "flags": [
@@ -208,9 +208,14 @@
       "detail": "1821 -> 1804; kept 1821"
     },
     {
-      "id": "minions-monsters",
-      "kind": "gross-decreased",
-      "detail": "530 -> 527; kept 530"
+      "id": "youcanseeeverything",
+      "kind": "new-missed-film",
+      "detail": "You Can See Everything joined at +$74.5M"
+    },
+    {
+      "id": "othermommy",
+      "kind": "dropped-missed-film",
+      "detail": "Other Mommy fell off the list"
     }
   ],
   "candidateBudgets": {
