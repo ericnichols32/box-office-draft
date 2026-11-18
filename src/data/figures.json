@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T20:54:29.345Z",
+  "updatedAt": "2026-11-18T20:30:03.349Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -25,7 +25,7 @@
     "spiderman-bnd": {
       "searchTitle": "Spider-Man: Brand New Day",
       "budget": 225,
-      "gross": 2523
+      "gross": 2524
     },
     "paw-patrol-dino": {
       "searchTitle": "PAW Patrol: The Dino Movie",
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 416.3
+      "gross": 416.4
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -197,7 +197,7 @@
       "title": "You Can See Everything",
       "releaseDate": "",
       "budget": 7,
-      "gross": 92,
+      "gross": 93,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     }
   ],
@@ -205,7 +205,7 @@
     {
       "id": "odyssey",
       "kind": "gross-decreased",
-      "detail": "1821 -> 1804; kept 1821"
+      "detail": "1821 -> 1805; kept 1821"
     }
   ],
   "candidateBudgets": {
