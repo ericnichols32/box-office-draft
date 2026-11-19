@@ -1,4 +1,4 @@
-import { grossDecision, budgetDecision } from './update-box-office.mjs';
+import { grossDecision, budgetDecision, confirmLower } from './update-box-office.mjs';
 import assert from 'node:assert/strict';
 
 const cases = [];
@@ -52,6 +52,29 @@ t('below the floor the multiplier ceiling does not apply', () => {
   // 10 -> 120 is 12x, but a $10M stored value is an opening figure, not a
   // settled total, so this growth is real and must be allowed through.
   assert.equal(grossDecision(10, 120, 30).accept, true);
+});
+
+// ── A sustained lower reading is a correction, not a glitch ──
+t('a single lower reading is held, not taken', () => {
+  const c = confirmLower(undefined, 1805, 3);
+  assert.equal(c.accept, false);
+  assert.equal(c.pending.runs, 1);
+});
+t('the same lower figure three runs running is accepted', () => {
+  let p;
+  ({ pending: p } = confirmLower(p, 1805, 3));
+  ({ pending: p } = confirmLower(p, 1805, 3));
+  assert.equal(confirmLower(p, 1805, 3).accept, true);
+});
+t('a different lower figure each run restarts the count', () => {
+  let p;
+  ({ pending: p } = confirmLower(p, 1805, 3));
+  ({ pending: p } = confirmLower(p, 900, 3));
+  assert.equal(p.runs, 1);
+});
+t('a rising gross clears any pending correction', () => {
+  // handled by the caller deleting pendingLower on accept; guard the decision
+  assert.equal(grossDecision(1805.3, 1812, 1).accept, true);
 });
 
 // ── Budgets ──

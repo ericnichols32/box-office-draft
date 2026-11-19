@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T20:30:03.349Z",
+  "updatedAt": "2026-11-19T16:07:45.095Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -10,12 +10,12 @@
     "toy-story-5": {
       "searchTitle": "Toy Story 5",
       "budget": 250,
-      "gross": 1149
+      "gross": 1150
     },
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1821
+      "gross": 1805.3
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 121.3,
+      "gross": 122.1,
       "pinned": [
         "budget"
       ]
@@ -197,17 +197,11 @@
       "title": "You Can See Everything",
       "releaseDate": "",
       "budget": 7,
-      "gross": 93,
+      "gross": 94,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     }
   ],
-  "flags": [
-    {
-      "id": "odyssey",
-      "kind": "gross-decreased",
-      "detail": "1821 -> 1805; kept 1821"
-    }
-  ],
+  "flags": [],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,

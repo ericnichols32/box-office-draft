@@ -39,6 +39,10 @@ const MULTIPLIER_FLOOR_M = 50;
 // How far down the deeper gross chart to look, and how many unseen titles may
 // cost a Wikipedia lookup in one run. The rest are picked up on later runs.
 const DEEP_CHART_ROWS = 60;
+// A source occasionally revises a gross DOWN when an earlier figure was wrong.
+// Refusing that forever locks in the bad number, so a lower reading repeated
+// this many runs is treated as a correction rather than a glitch.
+const LOWER_CONFIRM_RUNS = 3;
 const MAX_NEW_LOOKUPS_PER_RUN = 12;
 const BUDGET_CHANGE_FLAG_PCT = 0.15;
 
@@ -65,6 +69,17 @@ export function grossDecision(prev, next, elapsedDays) {
     return { accept: false, reason: 'gross-jump' };
   }
   return { accept: true, reason: 'ok' };
+}
+
+/**
+ * Tracks a repeated lower reading. One is noise; the same lower figure several
+ * runs running is the source correcting itself, and must eventually be taken.
+ * @param {{value:number,runs:number}|undefined} pending
+ */
+export function confirmLower(pending, next, runsNeeded = LOWER_CONFIRM_RUNS) {
+  const sameReading = pending && Math.abs(pending.value - next) <= Math.max(1, pending.value * 0.01);
+  const updated = sameReading ? { value: next, runs: pending.runs + 1 } : { value: next, runs: 1 };
+  return updated.runs >= runsNeeded ? { accept: true, pending: null } : { accept: false, pending: updated };
 }
 
 /** Budgets rarely move once a film is out; a real swing waits for a human. */
@@ -112,8 +127,20 @@ async function main() {
       const d = grossDecision(entry.gross, found.gross, elapsedDays);
       if (d.accept) {
         entry.gross = found.gross;
+        delete entry.pendingLower;
         changed++;
-      } else if (d.reason === 'gross-decreased' || d.reason === 'gross-jump') {
+      } else if (d.reason === 'gross-decreased') {
+        const c = confirmLower(entry.pendingLower, found.gross);
+        if (c.accept) {
+          flags.push({ id, kind: 'gross-corrected-down', detail: `${entry.gross} -> ${found.gross} (same lower figure ${LOWER_CONFIRM_RUNS} runs running)` });
+          entry.gross = found.gross;
+          delete entry.pendingLower;
+          changed++;
+        } else {
+          entry.pendingLower = c.pending;
+          flags.push({ id, kind: 'gross-decreased', detail: `${entry.gross} -> ${found.gross}; kept ${entry.gross} (${c.pending.runs}/${LOWER_CONFIRM_RUNS})` });
+        }
+      } else if (d.reason === 'gross-jump') {
         flags.push({ id, kind: d.reason, detail: `${entry.gross} -> ${found.gross}; kept ${entry.gross}` });
       }
     }
