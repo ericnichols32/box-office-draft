@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T16:07:45.095Z",
+  "updatedAt": "2026-11-20T20:11:09.123Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 122.1,
+      "gross": 122.4,
       "pinned": [
         "budget"
       ]
@@ -106,12 +106,12 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 416.4
+      "gross": 417
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
       "budget": 170,
-      "gross": null
+      "gross": 21
     },
     "werwulf": {
       "searchTitle": "Werwulf (2026 Eggers)",
