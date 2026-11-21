@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T20:11:09.123Z",
+  "updatedAt": "2026-11-21T19:13:19.437Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 122.4,
+      "gross": 124.2,
       "pinned": [
         "budget"
       ]
@@ -110,8 +110,8 @@
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
-      "budget": 170,
-      "gross": 21
+      "budget": 150,
+      "gross": 76
     },
     "werwulf": {
       "searchTitle": "Werwulf (2026 Eggers)",
@@ -197,7 +197,7 @@
       "title": "You Can See Everything",
       "releaseDate": "",
       "budget": 7,
-      "gross": 94,
+      "gross": 96,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     }
   ],
