@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T19:13:19.437Z",
+  "updatedAt": "2026-11-22T19:34:38.499Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -35,12 +35,12 @@
     "insidious-bleeding": {
       "searchTitle": "Insidious: Out of the Further",
       "budget": 18,
-      "gross": 171.6
+      "gross": 171.7
     },
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 124.2,
+      "gross": 126.2,
       "pinned": [
         "budget"
       ]
@@ -101,12 +101,12 @@
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
       "budget": 85,
-      "gross": 530
+      "gross": 531
     },
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 417
+      "gross": 419.4
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -185,23 +185,29 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/c2/Scream_7_%28poster%29.jpg"
     },
     {
+      "id": "youcanseeeverything",
+      "title": "You Can See Everything",
+      "releaseDate": "",
+      "budget": 7,
+      "gross": 99,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
+    },
+    {
       "id": "verity",
       "title": "Verity",
       "releaseDate": "",
       "budget": 40,
       "gross": 181,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/60/Verity_poster.jpg"
-    },
-    {
-      "id": "youcanseeeverything",
-      "title": "You Can See Everything",
-      "releaseDate": "",
-      "budget": 7,
-      "gross": 96,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     }
   ],
-  "flags": [],
+  "flags": [
+    {
+      "id": "hunger-games-sequel",
+      "kind": "gross-jump",
+      "detail": "76 -> 225; kept 76"
+    }
+  ],
   "candidateBudgets": {
     "minionsampmonsters": null,
     "hoppers": 150,
@@ -248,6 +254,8 @@
     "godzillaminuszero0": null,
     "eigachiikawaningyonoshim": null,
     "ramayanapart1": null,
-    "wildwood": 100
+    "wildwood": 100,
+    "thehungergamessunriseon": 150,
+    "ebenezer": 38
   }
 }
