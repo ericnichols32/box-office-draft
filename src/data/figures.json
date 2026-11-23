@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T19:34:38.499Z",
+  "updatedAt": "2026-11-23T23:52:09.860Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -15,7 +15,7 @@
     "odyssey": {
       "searchTitle": "The Odyssey (2026 Nolan)",
       "budget": 250,
-      "gross": 1805.3
+      "gross": 1806
     },
     "moana-2026": {
       "searchTitle": "Moana (2026 live action)",
@@ -106,7 +106,7 @@
     "resident-evil-2026": {
       "searchTitle": "Resident Evil (2026)",
       "budget": 75,
-      "gross": 419.4
+      "gross": 420.3
     },
     "hunger-games-sequel": {
       "searchTitle": "The Hunger Games: Sunrise on the Reaping",
@@ -189,7 +189,7 @@
       "title": "You Can See Everything",
       "releaseDate": "",
       "budget": 7,
-      "gross": 99,
+      "gross": 102,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     },
     {
