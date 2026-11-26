@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T21:41:18.597Z",
+  "updatedAt": "2026-11-26T21:29:58.732Z",
   "note": "Machine-managed by scripts/update-box-office.mjs (Wikipedia, no API key). Money in USD millions. searchTitle is the real release title used for lookups. pinned fields are human decisions the job must not overwrite.",
   "drafted": {
     "mario-galaxy": {
@@ -40,7 +40,7 @@
     "clayface": {
       "searchTitle": "Clayface (2026)",
       "budget": 30,
-      "gross": 126.4,
+      "gross": 126.7,
       "pinned": [
         "budget"
       ]
@@ -96,7 +96,7 @@
     "disclosure-day": {
       "searchTitle": "Disclosure Day (2026)",
       "budget": 115,
-      "gross": 246.8
+      "gross": 248.2
     },
     "minions-monsters": {
       "searchTitle": "Minions & Monsters",
@@ -189,7 +189,7 @@
       "title": "You Can See Everything",
       "releaseDate": "",
       "budget": 7,
-      "gross": 105,
+      "gross": 107,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/You_Can_See_Everything_poster.jpeg"
     },
     {
@@ -205,7 +205,7 @@
     {
       "id": "hunger-games-sequel",
       "kind": "gross-jump",
-      "detail": "76 -> 253.2; kept 76"
+      "detail": "76 -> 268.3; kept 76"
     }
   ],
   "candidateBudgets": {
@@ -256,6 +256,7 @@
     "ramayanapart1": null,
     "wildwood": 100,
     "thehungergamessunriseon": 150,
-    "ebenezer": 38
+    "ebenezer": 38,
+    "thecatinthehat": 86
   }
 }
